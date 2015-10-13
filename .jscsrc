@@ -1,0 +1,35 @@
+{
+  "esnext": true,
+  "requireSpacesInFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInFunctionDeclaration": {
+    "beforeOpeningCurlyBrace": true
+  },
+  "safeContextKeyword": "self",
+  "validateIndentation": 2,
+  "validateQuoteMarks": "'",
+  "validateLineBreaks": "LF",
+  "requireDotNotation": true,
+  "requireKeywordsOnNewLine": [
+    "else"
+  ],
+  "disallowSpacesInCallExpression": true,
+  "requireSpacesInConditionalExpression": {
+    "afterTest": true,
+    "beforeConsequent": true,
+    "afterConsequent": true,
+    "beforeAlternate": true
+  },
+  "requireSpacesInForStatement": true,
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "try",
+    "catch"
+  ]
+}

@@ -1,0 +1,1 @@
+Control and receive events from sonos devices using node and rxjs.
