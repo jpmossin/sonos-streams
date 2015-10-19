@@ -1,6 +1,6 @@
 {
   "name": "sonos-streams",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Control sonos devices using node and rxjs",
   "author": "jpmossin",
   "license": "MIT",
@@ -8,6 +8,10 @@
   "scripts": {
     "lint": "jshint index.js lib/*js",
     "jscs": "jscs lib/ examples/ --esnext"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpmossin/sonos-streams.git"
   },
   "dependencies": {
     "camel-case": "^1.1.2",

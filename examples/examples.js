@@ -31,7 +31,6 @@ const volumeArgs = {
 };
 
 zoneplayers
-  .filter(zp => zp.roomName === 'Kontor')
   .flatMap(
     zp =>
       sonos.control
