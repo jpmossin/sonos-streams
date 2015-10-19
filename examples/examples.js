@@ -13,12 +13,12 @@ const zoneplayers = sonos.discovery.zonePlayerStream
 zoneplayers
   .subscribe(zp => console.log('Discovered:', zp.roomName));
 
- //set up event subscriptions on discovered zone-players
+//set up event subscriptions on discovered zone-players
 zoneplayers
   .flatMap(sonos.events.subscribe)
   .subscribe(subEvent => console.log('New subscription set up:', subEvent.zpUDN, subEvent.serviceTag));
 
- //log all avt-events (play, plause, next, etc)
+// log all avt-events (play, plause, next, etc)
 sonos.events.eventStream
   .filter(event => event.serviceTag === 'deviceProps')
   .subscribe(event => console.log('avt event from', event.zpUDN));
@@ -29,10 +29,13 @@ const volumeArgs = {
   Channel: 'Master',
   DesiredVolume: 25
 };
+
 zoneplayers
+  .filter(zp => zp.roomName === 'Kontor')
   .flatMap(
     zp =>
-      sonos.control.executeAction(zp.mediaRenderer.renderingControl, 'SetVolume', volumeArgs)
+      sonos.control
+        .executeAction(zp.mediaRenderer.renderingControl, 'SetVolume', volumeArgs)
         .map('Volume adjusted for ' + zp.roomName))
   .subscribe(console.log);
 
