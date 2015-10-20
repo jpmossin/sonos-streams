@@ -5,6 +5,9 @@
   "author": "jpmossin",
   "license": "MIT",
   "main": "index.js",
+  "engines" : {
+    "node" : ">=4.1.0"
+  },
   "scripts": {
     "lint": "jshint index.js lib/*js",
     "jscs": "jscs lib/ examples/ --esnext"
