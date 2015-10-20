@@ -20,7 +20,7 @@ zoneplayers
 
 // log all avt-events (play, plause, next, etc)
 sonos.events.eventStream
-  .filter(event => event.serviceTag === 'deviceProps')
+  .filter(event => event.serviceTag === 'avt')
   .subscribe(event => console.log('avt event from', event.zpUDN));
 
 // Set the volume of all zone players to 25% when they are discovered
