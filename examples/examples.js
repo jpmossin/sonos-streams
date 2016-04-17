@@ -18,7 +18,7 @@ zoneplayers
   .flatMap(sonos.events.subscribe)
   .subscribe(subEvent => console.log('New subscription set up:', subEvent.zpUDN, subEvent.serviceTag));
 
-// log all avt-events (play, plause, next, etc)
+// log all avt-events (play, pause, next, etc)
 sonos.events.eventStream
   .filter(event => event.serviceTag === 'avt')
   .subscribe(event => console.log('avt event from', event.zpUDN));
@@ -29,13 +29,11 @@ const volumeArgs = {
   Channel: 'Master',
   DesiredVolume: 25
 };
-
 zoneplayers
-  .flatMap(
-    zp =>
-      sonos.control
-        .executeAction(zp.mediaRenderer.renderingControl, 'SetVolume', volumeArgs)
-        .map('Volume adjusted for ' + zp.roomName))
+  .flatMap(zp =>
+    sonos.control
+      .executeAction(zp.mediaRenderer.renderingControl, 'SetVolume', volumeArgs)
+      .map('Volume adjusted for ' + zp.roomName))
   .subscribe(console.log);
 
 
