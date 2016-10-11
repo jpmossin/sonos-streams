@@ -12,7 +12,7 @@ const allSonosDevices = sonos.discovery.zonePlayerStream;
 allSonosDevices
   .subscribe(zp => console.log('Discovered:', zp.roomName));
 
-// Filter away devices that don't have a mediaRenderer (bridges,subs, etc)
+// Filter away devices that don't have a AVTransport service (bridges,subs, etc)
 const zoneplayers = allSonosDevices
   .filter(device => device.mediaRenderer && device.mediaRenderer.avtransport);
 
