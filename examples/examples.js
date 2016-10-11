@@ -4,14 +4,17 @@ const sonos = require('../');
 
 // start searching for sonos devices / zone-players
 sonos.discovery.search();
+setInterval(sonos.discovery.search, 10 * 1000);
+
+const allSonosDevices = sonos.discovery.zonePlayerStream;
+
+// print device names
+allSonosDevices
+  .subscribe(zp => console.log('Discovered:', zp.roomName));
 
 // Filter away devices that don't have a mediaRenderer (bridges,subs, etc)
-const zoneplayers = sonos.discovery.zonePlayerStream
-  .filter(device => device.mediaRenderer);
-
-// print room-names
-zoneplayers
-  .subscribe(zp => console.log('Discovered:', zp.roomName));
+const zoneplayers = allSonosDevices
+  .filter(device => device.mediaRenderer && device.mediaRenderer.avtransport);
 
 //set up event subscriptions on discovered zone-players
 zoneplayers
